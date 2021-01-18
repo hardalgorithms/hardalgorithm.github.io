@@ -1,9 +1,0 @@
-[{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target": {
-    "namespace": "android_app",
-    "package_name": "com.test.test2_tabscomplete",
-    "sha256_cert_fingerprints":
-    ["D6:DF:15:45:D5:BB:23:AB:62:B4:35:96:B1:83:B7:91:23:FC:33:44:30:37:0B:0B:DC:4D:D3:C5:EA:41:AE:E2"]
-  }
-}]
