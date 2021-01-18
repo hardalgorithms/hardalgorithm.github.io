@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>Playground</title>
+</head>
+<body>
+
+<h2>You requested</h2>
+<tt>http://cp.appotrack.space/</tt><br>
+<a href="javascript:document.location.reload(true)">Reload</a> | <a href="http://localhost/">Localhost</a> | <a href="http://localhost:8080">SDKDebuggingPage</a> | <a href="/page2.html">Page 2</a>
+
+<h2>InjectedApp</h2>
+InjectedApp: <p id="injectedapp_status" style="color:red; display:inline-block;"></p><br>
+<input type="button" data-injectedapp="" value="InjectedApp.ShowToast()" onclick="javascript:return InjectedApp.ShowToast('Hello World');" />
+<input type="button" data-injectedapp="" value="InjectedApp.AFEvent(af_level_achieved, af_level:999)" onclick="javascript:sigBool(InjectedApp.AFEvent('af_level_achieved', 'af_level:999,af_score:777'));" />
+<input type="button" data-injectedapp="" value="InjectedApp.KCEvent(ad_click, aga:ugu)" onclick="javascript:sigBool(InjectedApp.KCEvent('ad_click', 'aga:ugu'));" />
+<input type="button" data-injectedapp="" value="InjectedApp.OSAddTags(is_test_device:x)" onclick="javascript:sigBool(InjectedApp.OSAddTags('is_test_device:'+Math.random()));" />
+<input type="button" data-injectedapp="" value="InjectedApp.FBEvent(fb_mobile_level_achieved,fb_level:999)" onclick="javascript:sigBool(InjectedApp.FBEvent('fb_mobile_level_achieved','fb_level:999'));" />
+<input type="button" data-injectedapp="" value="InjectedApp.Track(endpoint,data)" onclick="javascript:InjectedApp.Track('https://google.com','data');" />
+<input type="button" data-injectedapp="" value="InjectedApp.HelpButtonVisible(true)" onclick="javascript:InjectedApp.HelpButtonVisible(true);" />
+<input type="button" data-injectedapp="" value="InjectedApp.HelpButtonVisible(false)" onclick="javascript:InjectedApp.HelpButtonVisible(false);" />
+<input type="button" data-injectedapp="" value="InjectedApp.GetAttributedUrl(localhost)" onclick="javascript:alert(InjectedApp.GetAttributedUrl('http://localhost/'));" />
+<input type="button" data-injectedapp="" value="InjectedApp.GetSupportedCalls()" onclick="javascript:alert(InjectedApp.GetSupportedCalls());" />
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+	//check is InjectedApp available
+	document.getElementById('injectedapp_status').textContent = typeof InjectedApp;
+	document.querySelectorAll("input[data-injectedapp]").forEach(function(e){
+		e.style.color="red";
+		if(typeof InjectedApp !== "undefined"){
+			var funcName = e.getAttribute('value').split('(',1)[0];
+			console.log(typeof eval(funcName));
+			if(typeof eval(funcName) !== "undefined"){
+				e.style.color="green";
+			}
+		}
+	});
+});
+
+function sigBool(val){
+	alert(val);
+}
+window.sigBool = sigBool;
+</script>
+
+<h2>HTML Tests</h2>
+<input type="file" name="myfile" multiple required>
+<audio controls>
+		<source src="https://upload.wikimedia.org/wikipedia/commons/b/be/Anthem-of-Ukraine_Chorus_Veryovka.ogg" type="audio/ogg">
+		Your browser does not support the audio tag.
+</audio>
+
+<h2>FYI</h2>
+<ul>
+	<li>Use <a href="/xss.js">xss.js</a> to check XSS-injection availability</li>
+	<li>Use <a href="/vlk.js">vlk.js</a> as <tt>jsurl</tt> for VLK offers</li>
+	<li>Use <a href="/kubok.js">kubok.js</a> as <tt>jsurl</tt> for "Золотой кубок"</li>
+</ul>
+
+<h2>Other tests</h2>
+<a href="tg:resolve?domain=UZB_payments_bot&start=cac775f8601">tg:resolve?domain=UZB_payments_bot&start=cac775f8601</a>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/5NV6Rdv1a3I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
