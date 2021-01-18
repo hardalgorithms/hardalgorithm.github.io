@@ -1,1 +1,1 @@
-include : ["assetlinks.json"]
+include : [".well-known"]
